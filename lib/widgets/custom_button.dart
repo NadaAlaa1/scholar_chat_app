@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.buttonText});
+  CustomButton({super.key, this.onTap, required this.buttonText});
 
+  VoidCallback? onTap;
   final String buttonText;
 
   @override
@@ -11,16 +13,19 @@ class CustomButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
         vertical: 20,
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        height: 60,
-        width: double.infinity,
-        child: Center(
-          child: Text(
-            buttonText,
+      child: GestureDetector(
+        onTap: onTap,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          height: 60,
+          width: double.infinity,
+          child: Center(
+            child: Text(
+              buttonText,
+            ),
           ),
         ),
       ),

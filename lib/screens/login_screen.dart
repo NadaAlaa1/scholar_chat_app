@@ -51,13 +51,13 @@ class LoginScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const CustomTextField(
+            CustomTextField(
               hintText: 'Email',
             ),
-            const CustomTextField(
+            CustomTextField(
               hintText: 'Password',
             ),
-            const CustomButton(
+            CustomButton(
               buttonText: 'LOGIN',
             ),
             Row(

@@ -1,12 +1,15 @@
 import 'package:chat_app/constants.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_text_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
 
   static String id = 'registerScreen';
+  String? email;
+  String? password;
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +47,35 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const CustomTextField(
+            CustomTextField(
+              onChanged: (data) {
+                email = data;
+              },
               hintText: 'Email',
             ),
-            const CustomTextField(
+            CustomTextField(
+              onChanged: (data) {
+                password = data;
+              },
               hintText: 'Password',
             ),
-            const CustomButton(
+            CustomButton(
+              onTap: () async {
+                try {
+                  UserCredential user = await FirebaseAuth.instance
+                      .createUserWithEmailAndPassword(
+                          email: email!, password: password!);
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'weak-password') {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('The password provided is too weak.')));
+                  } else if (e.code == 'email-already-in-use') {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('The account already exists for that email.')));
+                  }
+                } catch (e) {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('$e')));
+                }
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Success')));
+              },
               buttonText: 'REGISTER',
             ),
             Row(
