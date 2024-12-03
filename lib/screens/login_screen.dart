@@ -1,5 +1,6 @@
 import 'package:chat_app/constants.dart';
 import 'package:chat_app/helper/show_snack_bar.dart';
+import 'package:chat_app/screens/chat_screen.dart';
 import 'package:chat_app/screens/register_screen.dart';
 import 'package:chat_app/widgets/custom_button.dart';
 import 'package:chat_app/widgets/custom_text_field.dart';
@@ -9,6 +10,8 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
+
+  static String id = 'LoginScreen';
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -88,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       setState(() {});
                       try {
                         await loginUser();
-                        showSnackBar(context, 'Success');
+                        Navigator.pushNamed(context, ChatScreen.id);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
                           showSnackBar(context, 'No user found for that email.');
