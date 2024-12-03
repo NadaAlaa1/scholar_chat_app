@@ -32,6 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
             horizontal: 8,
           ),
           child: Form(
+            key: formKey,
             child: ListView(
               children: [
                 const SizedBox(
@@ -88,7 +89,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       try {
                         await loginUser();
                         showSnackBar(context, 'Success');
-                        Navigator.pop(context);
                       } on FirebaseAuthException catch (e) {
                         if (e.code == 'user-not-found') {
                           showSnackBar(context, 'No user found for that email.');
