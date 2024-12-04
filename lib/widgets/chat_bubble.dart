@@ -1,10 +1,14 @@
 import 'package:chat_app/constants.dart';
+import 'package:chat_app/models/message.dart';
 import 'package:flutter/material.dart';
 
 class ChatBubble extends StatelessWidget {
-  const ChatBubble({
+  ChatBubble({
     super.key,
+    required this.message,
   });
+
+  final Message message;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +17,8 @@ class ChatBubble extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(
           left: 16,
-          top: 32,
-          bottom: 32,
+          top: 16,
+          bottom: 16,
           right: 32,
         ),
         margin: const EdgeInsets.symmetric(
@@ -29,8 +33,8 @@ class ChatBubble extends StatelessWidget {
           ),
           color: kPrimaryColor,
         ),
-        child: const Text(
-          'i am an user',
+        child: Text(
+          message.message,
           style: TextStyle(
             color: Colors.white,
           ),
