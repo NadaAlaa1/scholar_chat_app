@@ -22,7 +22,7 @@ class ScholarChat extends StatelessWidget {
       routes: {
         LoginScreen.id : (context) => LoginScreen(),
         RegisterScreen.id : (context) => RegisterScreen(),
-        ChatScreen.id : (context) => const ChatScreen(),
+        ChatScreen.id : (context) => ChatScreen(),
       },
       debugShowCheckedModeBanner: false,
       initialRoute: LoginScreen.id,
