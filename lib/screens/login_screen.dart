@@ -79,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: 'Email',
                 ),
                 CustomFormTextField(
+                  obscureText: true,
                   onChanged: (data) {
                     password = data;
                   },
