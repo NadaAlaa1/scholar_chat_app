@@ -16,6 +16,7 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var email = ModalRoute.of(context)!.settings.arguments;
     return StreamBuilder<QuerySnapshot>(
       stream: messages.orderBy(kCreatedAt, descending: true).snapshots(),
       builder: (context, snapshot) {
@@ -45,11 +46,13 @@ class ChatScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.builder(
-                    reverse: true,
+                      reverse: true,
                       controller: _controller,
                       itemCount: messagesList.length,
                       itemBuilder: (context, index) {
-                        return ChatBubble(message: messagesList[index]);
+                        return messagesList[index].id == email
+                            ? ChatBubble(message: messagesList[index])
+                            : ChatBubbleForFriend(message: messagesList[index]);
                       }),
                 ),
                 Padding(
@@ -60,6 +63,7 @@ class ChatScreen extends StatelessWidget {
                       messages.add({
                         kMessage: data,
                         kCreatedAt: DateTime.now(),
+                        'id': email,
                       });
                       controller.clear();
                       _controller.animateTo(
