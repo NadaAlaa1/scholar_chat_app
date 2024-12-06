@@ -5,7 +5,7 @@ Scholar Chat is a Flutter-based application designed to facilitate communication
 ## Table of Contents
 
 - [Features](#features)
-- [Getting Started](#getting_starting)
+- [Getting Started](#gettingstarting)
 
 ## Features
 
@@ -37,3 +37,10 @@ To run the Scholar Chat app, ensure you have the following installed:
    ```bash
    flutter run
 
+## Dependencies
+
+This project uses the following key packages:
+
+- Firebase: For real-time database and user authentication.
+- Provider: For state management.
+- Flutter Widgets: Ensuring a responsive and dynamic UI.
