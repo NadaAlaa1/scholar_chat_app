@@ -46,13 +46,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   'assets/images/scholar.png',
                   height: 100,
                 ),
-                const Text(
-                  'Scholar Chat',
-                  style: TextStyle(
-                    fontSize: 32,
-                    color: Colors.white,
-                    fontFamily: 'pacifico',
-                  ),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Scholar Chat',
+                      style: TextStyle(
+                        fontSize: 32,
+                        color: Colors.white,
+                        fontFamily: 'pacifico',
+                      ),
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 60,
@@ -127,9 +132,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ],
-                ),
-                const Spacer(
-                  flex: 3,
                 ),
               ],
             ),
