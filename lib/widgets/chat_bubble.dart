@@ -12,31 +12,34 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Align(
       alignment: Alignment.centerLeft,
       child: Container(
-        padding: const EdgeInsets.only(
-          left: 16,
-          top: 16,
-          bottom: 16,
-          right: 32,
+        padding: EdgeInsets.only(
+          left: size.width * 0.04,
+          top: size.width * 0.04,
+          bottom: size.width * 0.04,
+          right: size.width * 0.08,
         ),
-        margin: const EdgeInsets.symmetric(
-          horizontal: 16,
-          vertical: 8,
+        margin: EdgeInsets.symmetric(
+          horizontal: size.width * 0.04,
+          vertical: size.height * 0.01,
         ),
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(32),
-            topRight: Radius.circular(32),
-            bottomRight: Radius.circular(32),
+            topLeft: Radius.circular(size.width * 0.08),
+            topRight: Radius.circular(size.width * 0.08),
+            bottomRight: Radius.circular(size.width * 0.08),
           ),
           color: kPrimaryColor,
         ),
         child: Text(
           message.message,
-          style: const TextStyle(
+          style: TextStyle(
             color: Colors.white,
+            fontSize: size.width * 0.04,
           ),
         ),
       ),
@@ -54,14 +57,16 @@ class ChatBubbleForFriend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Align(
       alignment: Alignment.centerRight,
       child: Container(
-        padding: const EdgeInsets.only(
-          left: 16,
-          top: 16,
-          bottom: 16,
-          right: 32,
+        padding: EdgeInsets.only(
+          left: size.width * 0.04,
+          top: size.width * 0.04,
+          bottom: size.width * 0.04,
+          right: size.width * 0.08,
         ),
         margin: const EdgeInsets.symmetric(
           horizontal: 16,

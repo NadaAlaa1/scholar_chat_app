@@ -17,15 +17,17 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var email = ModalRoute.of(context)!.settings.arguments;
+    final size = MediaQuery.of(context).size;
+
     return StreamBuilder<QuerySnapshot>(
       stream: messages.orderBy(kCreatedAt, descending: true).snapshots(),
       builder: (context, snapshot) {
-        snapshot.data;
         if (snapshot.hasData) {
           List<Message> messagesList = [];
-          for (int i = 0; i < snapshot.data!.docs.length; i++) {
-            messagesList.add(Message.fromJson(snapshot.data!.docs[i]));
+          for (var doc in snapshot.data!.docs) {
+            messagesList.add(Message.fromJson(doc));
           }
+
           return Scaffold(
             appBar: AppBar(
               automaticallyImplyLeading: false,
@@ -35,8 +37,9 @@ class ChatScreen extends StatelessWidget {
                 children: [
                   Image.asset(
                     kLogo,
-                    height: 50,
+                    height: size.height * 0.05,
                   ),
+                  const SizedBox(width: 8),
                   const Text('Chat'),
                 ],
               ),
@@ -46,17 +49,18 @@ class ChatScreen extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.builder(
-                      reverse: true,
-                      controller: _controller,
-                      itemCount: messagesList.length,
-                      itemBuilder: (context, index) {
-                        return messagesList[index].id == email
-                            ? ChatBubble(message: messagesList[index])
-                            : ChatBubbleForFriend(message: messagesList[index]);
-                      }),
+                    reverse: true,
+                    controller: _controller,
+                    itemCount: messagesList.length,
+                    itemBuilder: (context, index) {
+                      return messagesList[index].id == email
+                          ? ChatBubble(message: messagesList[index])
+                          : ChatBubbleForFriend(message: messagesList[index]);
+                    },
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: EdgeInsets.all(size.width * 0.04),
                   child: TextField(
                     controller: controller,
                     onSubmitted: (data) {
@@ -74,15 +78,16 @@ class ChatScreen extends StatelessWidget {
                     },
                     decoration: InputDecoration(
                       hintText: 'Message',
-                      suffixIcon: const Icon(
+                      suffixIcon: Icon(
                         Icons.send,
                         color: kPrimaryColor,
+                        size: size.width * 0.07,
                       ),
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(size.width * 0.04),
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(size.width * 0.04),
                         borderSide: const BorderSide(color: kPrimaryColor),
                       ),
                     ),
@@ -92,7 +97,7 @@ class ChatScreen extends StatelessWidget {
             ),
           );
         } else {
-          return const Text('Loading...');
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

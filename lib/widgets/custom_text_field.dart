@@ -8,16 +8,18 @@ class CustomFormTextField extends StatelessWidget {
     this.obscureText = false,
   });
 
-  Function(String)? onChanged;
+  final Function(String)? onChanged;
   final String? hintText;
-  bool? obscureText;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: size.height * 0.01),
       child: TextFormField(
-        obscureText: obscureText!,
+        obscureText: obscureText,
         validator: (data) {
           if (data!.isEmpty) {
             return 'This field is required';
@@ -27,18 +29,21 @@ class CustomFormTextField extends StatelessWidget {
         onChanged: onChanged,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: const TextStyle(
+          hintStyle: TextStyle(
             color: Colors.white,
+            fontSize: size.width * 0.04,
           ),
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(
               color: Colors.white,
             ),
+            borderRadius: BorderRadius.circular(size.width * 0.03),
           ),
-          border: const OutlineInputBorder(
-            borderSide: BorderSide(
+          border: OutlineInputBorder(
+            borderSide: const BorderSide(
               color: Colors.white,
             ),
+            borderRadius: BorderRadius.circular(size.width * 0.03),
           ),
         ),
       ),
