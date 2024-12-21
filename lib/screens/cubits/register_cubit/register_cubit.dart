@@ -20,7 +20,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         emit(RegisterFailure(errMessage: 'This email is already in use'));
       }
     } catch (e) {
-      emit(RegisterFailure(errMessage: 'There was an error, please try again'));
+      emit(RegisterFailure(errMessage: 'There was an error, please try again.'));
     }
   }
 }
