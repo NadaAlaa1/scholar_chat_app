@@ -18,6 +18,8 @@ class RegisterScreen extends StatelessWidget {
 
   GlobalKey<FormState> formKey = GlobalKey();
 
+  RegisterScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<RegisterCubit, RegisterState>(

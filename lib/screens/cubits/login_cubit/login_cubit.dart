@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:chat_app/helper/show_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:meta/meta.dart';
 
@@ -17,9 +16,9 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginSuccess());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        emit(LoginFailure(errMessage: 'user not found'));
+        emit(LoginFailure(errMessage: 'User not found'));
       } else if (e.code == 'wrong-password') {
-        emit(LoginFailure(errMessage: 'wrong password'));
+        emit(LoginFailure(errMessage: 'Wrong Password'));
       }
     } catch (e) {
       emit(LoginFailure(errMessage: 'Something went wrong'));
