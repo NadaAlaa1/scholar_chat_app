@@ -5,6 +5,7 @@ Scholar Chat is a Flutter-based application designed to facilitate communication
 ## Table of Contents
 
 - [Features](#features)
+- [Demo](#demo)
 - [Getting Started](#getting-started)
 - [Dependencies](#dependencies)
 - [Contributing](#contributing)
@@ -16,7 +17,13 @@ Scholar Chat is a Flutter-based application designed to facilitate communication
 - **User Registration**: Register with just your name—no email or password required.
 - **Secure and Private**: Implements encryption to ensure data security and user privacy.
 - **State Management with Cubit**: Efficient state management using the Cubit package for better performance and scalability.
-  
+
+## Demo
+
+Watch the app in action:
+
+![Scholar Chat App Demo](assets/demo.mp4)
+
 ## Getting Started
 
 ### Prerequisites
