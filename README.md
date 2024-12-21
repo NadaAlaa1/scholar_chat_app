@@ -22,7 +22,9 @@ Scholar Chat is a Flutter-based application designed to facilitate communication
 
 Watch the app in action:
 
-![Scholar Chat App Demo](assets/demo.gif)
+<div align="center">
+  <img src="assets/demo.gif" alt="Scholar Chat App Demo">
+</div>
 
 ## Getting Started
 
