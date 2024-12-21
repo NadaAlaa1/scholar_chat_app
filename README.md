@@ -15,6 +15,7 @@ Scholar Chat is a Flutter-based application designed to facilitate communication
 - **User-Friendly Interface**: Clean and intuitive interface for a smooth chat experience.
 - **User Registration**: Register with just your name—no email or password required.
 - **Secure and Private**: Implements encryption to ensure data security and user privacy.
+- **State Management with Cubit**: Efficient state management using the Cubit package for better performance and scalability.
   
 ## Getting Started
 
@@ -44,7 +45,7 @@ To run the Scholar Chat app, ensure you have the following installed:
 This project uses the following key packages:
 
 - Firebase: For real-time database and user authentication.
-- Provider: For state management.
+- Cubit: For state management, providing a simple and efficient way to manage app state.
 - Flutter Widgets: Ensuring a responsive and dynamic UI.
 
 ## Contributing
@@ -52,7 +53,17 @@ This project uses the following key packages:
 Contributions are welcome! Please follow these steps:
 
 1. Fork the repository.
-2. Create a feature branch: git checkout -b feature-name.
-3. Commit your changes: git commit -m "Add feature description".
-4. Push to your branch: git push origin feature-name.
+   
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature-name
+   
+3. Commit your changes:
+   ```bash
+   git commit -m "Add feature description".
+   
+4. Push to your branch:
+   ```bash
+   git push origin feature-name.
+   
 5. Submit a pull request.
